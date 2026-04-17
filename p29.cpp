@@ -23,33 +23,33 @@ enNumberType CheckNumberType(int number)
         return enNumberType::Odd;
 }
 
-int SumOddNumber(int number)
+int SumEvenNumber(int number)
 {
     int Sum = 0;
     bool OddOrEven = CheckNumberType(number);
 
     if(OddOrEven)
     {
-        for (int counter = number; counter > 0; counter -= 2)
+        for (int counter = number - 1; counter > 0; counter -= 2)
 
             Sum += counter;
     }else
 
-        for (int counter = number - 1; counter > 0; counter -= 2)
+        for (int counter = number; counter > 0; counter -= 2)
 
             Sum += counter;
 
     return Sum;
 }
 
-void PrintSumOdd()
+void PrintSumEven()
 {
-    int result = SumOddNumber(ReadNumber());
-    cout << endl << "The sum odd number is " << result << endl;
+    int result = SumEvenNumber(ReadNumber());
+    cout << endl << "The sum even number is " << result << endl;
 }
 
 int main()
 {
-    PrintSumOdd();
+    PrintSumEven();
     return 0;
 }
