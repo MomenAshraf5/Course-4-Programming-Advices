@@ -17,7 +17,7 @@ int FactorialNumber(int number)
 
     for(int counter = number; counter > 0; counter--)
 
-        Sum *= counter;
+        Sum = Sum * counter;
 
     return Sum;
 }
