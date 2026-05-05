@@ -11,9 +11,9 @@ int ReadNumber(string messages)
     do{
         cout << messages << endl;
         cin >> Number;
-        if(Number < 0)
+        if(Number <= 0)
             messages = "Please enter a number grater than zero";
-    }while(Number < 0);
+    }while(Number <= 0);
 
     return Number;
 }
@@ -26,28 +26,29 @@ enPrime CheckPrimeNumber(int number)
     {
         return enPrime::Prime;
     }
-    for(int i = Counter; number > i; i++)
+    for(int i = Counter; i <= M; i++)
     {
         if(number % Counter == 0)
         {
             return enPrime::NotPrime;
-        }else if(Counter == M){
-            return enPrime::Prime;
         }
-
         Counter +=1;
     }
+    return enPrime::Prime;
 }
 
-string CheckTypeOfNumber()
+void CheckTypeOfNumber()
 {
     int Number = ReadNumber("Enter a Number to check if Prime or not");
-    enPrime x = CheckPrimeNumber(Number);
-    switch(x) {
+    enPrime Type = CheckPrimeNumber(Number);
+
+    switch(Type) {
         case enPrime::Prime:
-            return "Prime";
+            cout << "Your Number Is Prime";
+            break;
         case enPrime::NotPrime:
-            return "Not Prime";
+            cout << "Your Number Is NotPrime";
+            break;
         default:
             break;
     }
@@ -55,6 +56,6 @@ string CheckTypeOfNumber()
 
 int main()
 {
-    cout << "Result" << CheckTypeOfNumber() << endl;   
+    CheckTypeOfNumber();
     return 0;
 }
