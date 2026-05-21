@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+enum enPerfect {Perfect = 1, NotPerfect = 0};
+
 int ReadNumber(string messages)
 {
     int Number;
@@ -36,20 +38,33 @@ int SumNumbersFromReminder(int userNumber)
     return Sum;
 }
 
-void CheckTheNumberIsPerfect()
+enPerfect CheckTheNumberIsPerfect(int userNumber)
+{
+    
+    int Sum = SumNumbersFromReminder(userNumber);
+    if(userNumber == Sum)
+    {
+        return enPerfect::Perfect;
+    }else{
+        return enPerfect::NotPerfect;
+    }
+}
+
+void CheckNumbersFrom1ToUserNumber()
 {
     int UserNumber = ReadNumber("Enter A number To check is Perfect or not");
-    int Sum = SumNumbersFromReminder(UserNumber);
-    if(UserNumber == Sum)
+    for (int Counter = 1; Counter < UserNumber; Counter++)
     {
-        cout << "Your Number " + to_string(UserNumber) + " is Perfect";
-    }else{
-        cout << "Your Number " + to_string(UserNumber) + " is Not Perfect";
+        if(enPerfect::Perfect == CheckTheNumberIsPerfect(Counter))
+        {
+            cout << "That Number " << to_string(Counter) << " is Perfect" << endl;
+        }
     }
+    
 }
 
 int main()
 {
-    CheckTheNumberIsPerfect();
+    CheckNumbersFrom1ToUserNumber();
     return 0;
 }
