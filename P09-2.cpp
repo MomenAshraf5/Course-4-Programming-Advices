@@ -46,7 +46,6 @@ int HowManyDigit(int userNumber, short digitNumber)
 
 void DisplayHowManyDigitInNumber(int userName)
 {
-
     for(int i =0; i < 10; i++)
     {
         // char DigitNumber = GetDigitNumber(userName);
